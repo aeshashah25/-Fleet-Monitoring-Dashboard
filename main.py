@@ -7,6 +7,7 @@ import asyncio
 from typing import List
 from uuid import uuid4
 import uvicorn
+import os
 
 app = FastAPI()
 
@@ -62,9 +63,7 @@ async def websocket_endpoint(websocket: WebSocket):
         await websocket.send_json(robots)
         await asyncio.sleep(5)  # Sending data every 5 seconds
 
-if __name__ == "__main__":
-    # Start the background task to update robot data
-    asyncio.create_task(update_robot_data())
 
-    # Running FastAPI with Uvicorn (bind to all network interfaces for external access)
-    uvicorn.run(app, host="0.0.0.0", port=5001)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Get the dynamic port if it's available
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
