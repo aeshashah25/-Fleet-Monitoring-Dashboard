@@ -11,7 +11,7 @@ COPY ./frontend/robot-dashboard/package.json ./frontend/robot_dashboard/package-
 RUN npm install
 
 # Copy the frontend code
-COPY ./frontend/robot_dashboard /app
+COPY ./frontend/robot-dashboard /app
 
 # Expose the port
 EXPOSE 3000
