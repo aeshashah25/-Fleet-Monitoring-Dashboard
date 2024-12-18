@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: backend-service
+    env: docker
+    dockerfilePath: Dockerfile.backend
+    buildCommand: ""  # You don't need to specify build commands; Docker handles this
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
